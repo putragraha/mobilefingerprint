@@ -1,12 +1,8 @@
 package com.klk.mobilefingerprint.activities;
 
 import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.klk.mobilefingerprint.R;
@@ -17,7 +13,6 @@ import com.klk.mobilefingerprint.utils.CalendarHelper;
 import com.klk.mobilefingerprint.utils.DateHelper;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Calendar mCalendar;
 
-    private DateHelper mDateHelper = new DateHelper();
-    private CalendarHelper mCalendarHelper;
-    private AlarmHelper mAlarmHelper;
+    private DateHelper mPrintDateHelper = new DateHelper();
+    private CalendarHelper mCalendarHelper = new CalendarHelper();
+    private AlarmHelper mAlarmHelper = new AlarmHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,13 +39,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         mDateText = (TextView) findViewById(R.id.tvDate);
-        mAlarmHelper = new AlarmHelper(this);
         mCalendar = new GregorianCalendar();
-        mCalendarHelper = new CalendarHelper(mCalendar);
     }
 
     private void setAddDateDaily(){
-        mCalendarHelper.setCalendar(DateTime.MIDNIGHT_HOUR, DateTime.LAST_MINUTE, DateTime.MIDDLE_SECOND);
-        mAlarmHelper.setAlarm(DailyDateReceiver.class, AlarmManager.INTERVAL_DAY, mCalendar);
+        mCalendarHelper.setCalendar(mCalendar, DateTime.MIDNIGHT_HOUR, DateTime.LAST_MINUTE, DateTime.MIDDLE_SECOND);
+        mAlarmHelper.setAlarm(this, DailyDateReceiver.class, AlarmManager.INTERVAL_DAY, mCalendar);
     }
 }
