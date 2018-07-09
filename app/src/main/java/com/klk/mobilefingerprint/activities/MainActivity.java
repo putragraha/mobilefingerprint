@@ -13,6 +13,7 @@ import com.klk.mobilefingerprint.utils.CalendarHelper;
 import com.klk.mobilefingerprint.utils.DateHelper;
 
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView mDateText;
 
     private Calendar mCalendar;
+    private Date mDate;
 
-    private DateHelper mPrintDateHelper = new DateHelper();
+    private DateHelper mDateHelper = new DateHelper();
     private CalendarHelper mCalendarHelper = new CalendarHelper();
     private AlarmHelper mAlarmHelper = new AlarmHelper();
 
@@ -39,7 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         mDateText = (TextView) findViewById(R.id.tvDate);
+        mDate = new Date();
         mCalendar = new GregorianCalendar();
+
+        String currDate = mDateHelper.getDateText(mDate);
+        String currDay = mDateHelper.getDayOfDate(mCalendar);
+        mDateText.setText(currDay + ", " + currDate);
     }
 
     private void setAddDateDaily(){

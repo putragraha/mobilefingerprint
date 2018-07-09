@@ -1,5 +1,7 @@
 package com.klk.mobilefingerprint.utils;
 
+import android.util.Log;
+
 import com.klk.mobilefingerprint.constantvalues.DateTime;
 import com.klk.mobilefingerprint.services.DateControl;
 
@@ -20,6 +22,13 @@ public class DateHelper implements DateControl {
     public String getDateText(Date date) {
         String dateString = mSimpleDateFormat.format(date);
         return dateString;
+    }
+
+    @Override
+    public String getDayOfDate(Calendar calendar) {
+        int day = calendar.get(Calendar.DAY_OF_WEEK);
+        String dayText = DateTime.DAY_NAME[day - 1];
+        return dayText;
     }
 
     @Override
