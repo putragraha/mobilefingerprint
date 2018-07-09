@@ -9,7 +9,7 @@ import java.util.Calendar;
 
 public class AlarmHelper {
 
-    private static final String TAG = DateHelper.class.getSimpleName();
+    private static final String TAG = AlarmHelper.class.getSimpleName();
 
     public  AlarmHelper(){}
 

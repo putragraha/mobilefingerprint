@@ -3,11 +3,10 @@ package com.klk.mobilefingerprint.receivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.widget.Toast;
 
-import com.klk.mobilefingerprint.utils.CalendarHelper;
-import com.klk.mobilefingerprint.utils.DateHelper;
+import com.klk.mobilefingerprint.utils.CalendarOperator;
+import com.klk.mobilefingerprint.utils.DateWriter;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,13 +17,13 @@ public class DailyDateReceiver extends BroadcastReceiver{
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        DateHelper dateHelper = new DateHelper();
-        CalendarHelper calendarHelper = new CalendarHelper();
+        DateWriter dateWriter = new DateWriter();
+        CalendarOperator calendarOperator = new CalendarOperator();
         Date date = new Date();
         Calendar calendar = Calendar.getInstance();
 
-        Date addedDate = calendarHelper.addDate(calendar, date, 1);
-        String nextDay = dateHelper.getDateText(addedDate);
+        Date addedDate = calendarOperator.addDate(calendar, date, 1);
+        String nextDay = dateWriter.getDateText(addedDate);
 
         Toast.makeText(context, nextDay, Toast.LENGTH_LONG).show();
     }

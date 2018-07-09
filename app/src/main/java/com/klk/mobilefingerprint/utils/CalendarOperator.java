@@ -1,16 +1,16 @@
 package com.klk.mobilefingerprint.utils;
 
 import com.klk.mobilefingerprint.constantvalues.DateTime;
-import com.klk.mobilefingerprint.services.CalendarOperation;
+import com.klk.mobilefingerprint.services.CalendarOperatorService;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class CalendarHelper implements CalendarOperation {
+public class CalendarOperator implements CalendarOperatorService {
 
-    private static final String TAG = CalendarHelper.class.getSimpleName();
+    private static final String TAG = CalendarOperator.class.getSimpleName();
 
-    public CalendarHelper(){
+    public CalendarOperator(){
     }
 
     @Override

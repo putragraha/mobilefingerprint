@@ -9,8 +9,8 @@ import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
 import com.klk.mobilefingerprint.receivers.DailyDateReceiver;
 import com.klk.mobilefingerprint.utils.AlarmHelper;
-import com.klk.mobilefingerprint.utils.CalendarHelper;
-import com.klk.mobilefingerprint.utils.DateHelper;
+import com.klk.mobilefingerprint.utils.CalendarOperator;
+import com.klk.mobilefingerprint.utils.DateWriter;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private Calendar mCalendar;
     private Date mDate;
 
-    private DateHelper mDateHelper = new DateHelper();
-    private CalendarHelper mCalendarHelper = new CalendarHelper();
+    private DateWriter mDateWriter = new DateWriter();
+    private CalendarOperator mCalendarOperator = new CalendarOperator();
     private AlarmHelper mAlarmHelper = new AlarmHelper();
 
     @Override
@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
         mDate = new Date();
         mCalendar = new GregorianCalendar();
 
-        String currDate = mDateHelper.getDateText(mDate);
-        String currDay = mDateHelper.getDayOfDate(mCalendar);
+        String currDate = mDateWriter.getDateText(mDate);
+        String currDay = mDateWriter.getDayOfDate(mCalendar);
         mDateText.setText(currDay + ", " + currDate);
     }
 
     private void setAddDateDaily(){
-        mCalendarHelper.setCalendar(mCalendar, DateTime.MIDNIGHT_HOUR, DateTime.LAST_MINUTE, DateTime.MIDDLE_SECOND);
+        mCalendarOperator.setCalendar(mCalendar, DateTime.MIDNIGHT_HOUR, DateTime.LAST_MINUTE, DateTime.MIDDLE_SECOND);
         mAlarmHelper.setAlarm(this, DailyDateReceiver.class, AlarmManager.INTERVAL_DAY, mCalendar);
     }
 }
