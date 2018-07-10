@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">MobileFingerprint</string>
+    <string name="app_name">Mobile Fingerprint</string>
+    <string name="label_administration">Administration</string>
+    <string name="label_put_finger">Put Your Finger to Login</string>
+    <string name="title_administration_login">Administrator Login</string>
+    <string name="title_staff_list">Staff List</string>
 </resources>

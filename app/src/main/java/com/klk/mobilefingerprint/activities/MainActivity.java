@@ -1,9 +1,14 @@
 package com.klk.mobilefingerprint.activities;
 
 import android.app.AlarmManager;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
@@ -39,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         // setAddDateDaily();
     }
 
-    private void init(){
+    private void init() {
         mDateText = (TextView) findViewById(R.id.tvDate);
         mDate = new Date();
         mCalendar = new GregorianCalendar();
@@ -49,8 +54,27 @@ public class MainActivity extends AppCompatActivity {
         mDateText.setText(currDay + ", " + currDate);
     }
 
-    private void setAddDateDaily(){
+    private void setAddDateDaily() {
         mCalendarOperator.setCalendar(mCalendar, DateTime.MIDNIGHT_HOUR, DateTime.LAST_MINUTE, DateTime.MIDDLE_SECOND);
         mAlarmHelper.setAlarm(this, DailyDateReceiver.class, AlarmManager.INTERVAL_DAY, mCalendar);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id) {
+            case R.id.menuAdmin:
+                Intent intent = new Intent(this, LoginAdminActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return true;
+        }
     }
 }

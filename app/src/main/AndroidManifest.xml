@@ -16,8 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".receivers.DailyDateReceiver" >
-        </receiver>
+
+        <receiver android:name=".receivers.DailyDateReceiver" />
+
+        <activity
+            android:name=".activities.LoginAdminActivity"
+            android:label="@string/title_administration_login"
+            android:parentActivityName=".activities.MainActivity" />
+
+        <activity
+            android:name=".activities.StaffListActivity"
+            android:label="@string/title_staff_list"
+            android:parentActivityName=".activities.MainActivity" />
     </application>
 
 </manifest>
