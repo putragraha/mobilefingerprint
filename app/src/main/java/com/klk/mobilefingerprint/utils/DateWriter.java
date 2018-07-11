@@ -1,5 +1,8 @@
 package com.klk.mobilefingerprint.utils;
 
+import android.content.Context;
+
+import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
 import com.klk.mobilefingerprint.services.DateWriterService;
 
@@ -23,9 +26,10 @@ public class DateWriter implements DateWriterService {
     }
 
     @Override
-    public String getDayOfDate(Calendar calendar) {
+    public String getDayOfDate(Context context, Calendar calendar) {
         int day = calendar.get(Calendar.DAY_OF_WEEK);
-        String dayText = DateTime.DAY_NAME[day - 1];
+        String[] days = context.getResources().getStringArray(R.array.day_name_array);
+        String dayText = days[day - 1];
         return dayText;
     }
 

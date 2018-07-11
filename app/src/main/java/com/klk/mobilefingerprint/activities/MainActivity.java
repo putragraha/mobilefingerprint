@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mCalendar = new GregorianCalendar();
 
         String currDate = mDateWriter.getDateText(mDate);
-        String currDay = mDateWriter.getDayOfDate(mCalendar);
+        String currDay = mDateWriter.getDayOfDate(this, mCalendar);
         mDateText.setText(currDay + ", " + currDate);
     }
 

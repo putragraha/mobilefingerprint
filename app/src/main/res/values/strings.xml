@@ -6,4 +6,15 @@
     <string name="title_staff_list">Staff List</string>
     <string name="label_admin">Admin</string>
     <string name="label_history">History</string>
+
+    <string-array name="day_name_array">
+        <item>Minggu</item>
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+    </string-array>
+
 </resources>
