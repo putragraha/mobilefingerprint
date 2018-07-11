@@ -8,13 +8,13 @@
     <string name="label_history">History</string>
 
     <string-array name="day_name_array">
-        <item>Minggu</item>
-        <item>Senin</item>
-        <item>Selasa</item>
-        <item>Rabu</item>
-        <item>Kamis</item>
-        <item>Jumat</item>
-        <item>Sabtu</item>
+        <item>Sunday</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
     </string-array>
 
 </resources>
