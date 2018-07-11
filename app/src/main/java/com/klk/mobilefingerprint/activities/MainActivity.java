@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
@@ -68,9 +69,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.menuAdmin:
-                Intent intent = new Intent(this, LoginAdminActivity.class);
-                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.in_from_right, R.anim.out_to_left);
-                startActivity(intent, options.toBundle());
+                Intent intentLoginAdmin = new Intent(this, LoginAdminActivity.class);
+                ActivityOptions optionsLoginAdmin = ActivityOptions.makeCustomAnimation(this, R.anim.in_from_right, R.anim.out_to_left);
+                startActivity(intentLoginAdmin, optionsLoginAdmin.toBundle());
+                return true;
+            case R.id.menuHistory:
+                Toast.makeText(this, "History under construction", Toast.LENGTH_LONG).show();
                 return true;
             default:
                 return true;

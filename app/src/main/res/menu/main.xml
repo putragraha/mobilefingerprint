@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menuHistory"
+        android:title="@string/label_history"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_list"
+        />
     <item
         android:id="@+id/menuAdmin"
-        android:title="Admin"/>
+        android:title="@string/label_admin"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_admin"
+        />
 </menu>
