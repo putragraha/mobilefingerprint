@@ -7,15 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.klk.mobilefingerprint.R;
-import com.klk.mobilefingerprint.utils.BackTransitionHelper;
-import com.klk.mobilefingerprint.utils.NextTransitionHelper;
+import com.klk.mobilefingerprint.utils.BackTransitioner;
+import com.klk.mobilefingerprint.utils.NextTransitioner;
 
 public class LoginAdminActivity extends AppCompatActivity {
 
     private Button mLogin;
 
-    private BackTransitionHelper mBackTransitionHelper = new BackTransitionHelper();
-    private NextTransitionHelper mNextTransitionHelper = new NextTransitionHelper();
+    private BackTransitioner mBackTransitioner = new BackTransitioner();
+    private NextTransitioner mNextTransitioner = new NextTransitioner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ public class LoginAdminActivity extends AppCompatActivity {
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            mNextTransitionHelper.animate(LoginAdminActivity.this, StaffListActivity.class);
+            mNextTransitioner.animate(LoginAdminActivity.this, StaffListActivity.class);
             finish();
             }
         });
@@ -38,7 +38,7 @@ public class LoginAdminActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                mBackTransitionHelper.animate(this, MainActivity.class);
+                mBackTransitioner.animate(this, MainActivity.class);
                 finish();
                 return true;
         }
@@ -47,7 +47,7 @@ public class LoginAdminActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mBackTransitionHelper.animate(this, MainActivity.class);
+        mBackTransitioner.animate(this, MainActivity.class);
         finish();
         super.onBackPressed();
     }

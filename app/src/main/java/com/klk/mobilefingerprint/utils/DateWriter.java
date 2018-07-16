@@ -4,13 +4,14 @@ import android.content.Context;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
-import com.klk.mobilefingerprint.services.DateWriterService;
+import com.klk.mobilefingerprint.services.DateTimeWriterService;
+import com.klk.mobilefingerprint.services.DayNameWriterService;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateWriter implements DateWriterService {
+public class DateWriter implements DateTimeWriterService, DayNameWriterService {
 
     private static final String TAG = DateWriter.class.getSimpleName();
     private SimpleDateFormat mSimpleDateFormat;
@@ -20,7 +21,7 @@ public class DateWriter implements DateWriterService {
     }
 
     @Override
-    public String getDateText(Date date) {
+    public String getText(Date date) {
         String dateString = mSimpleDateFormat.format(date);
         return dateString;
     }

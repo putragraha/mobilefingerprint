@@ -7,6 +7,7 @@
     <string name="label_admin">Admin</string>
     <string name="label_history">History</string>
     <string name="label_logo_desc">KLK Logo</string>
+    <string name="label_success_attendance">Thank You</string>
 
     <string-array name="day_name_array">
         <item>Sunday</item>

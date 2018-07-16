@@ -23,7 +23,7 @@ public class DailyDateReceiver extends BroadcastReceiver{
         Calendar calendar = Calendar.getInstance();
 
         Date addedDate = calendarOperator.addDate(calendar, date, 1);
-        String nextDay = dateWriter.getDateText(addedDate);
+        String nextDay = dateWriter.getText(addedDate);
 
         Toast.makeText(context, nextDay, Toast.LENGTH_LONG).show();
     }

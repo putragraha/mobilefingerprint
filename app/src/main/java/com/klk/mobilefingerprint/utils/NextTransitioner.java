@@ -7,9 +7,9 @@ import android.content.Intent;
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.services.TransitionService;
 
-public class NextTransitionHelper implements TransitionService {
+public class NextTransitioner implements TransitionService {
 
-    public NextTransitionHelper(){}
+    public NextTransitioner(){}
 
     @Override
     public void animate(Context context, Class javaClass) {

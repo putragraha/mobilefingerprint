@@ -5,12 +5,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.klk.mobilefingerprint.R;
-import com.klk.mobilefingerprint.utils.BackTransitionHelper;
-import com.klk.mobilefingerprint.utils.NextTransitionHelper;
+import com.klk.mobilefingerprint.utils.BackTransitioner;
 
 public class StaffListActivity extends AppCompatActivity {
 
-    private BackTransitionHelper mBackTransitionHelper = new BackTransitionHelper();
+    private BackTransitioner mBackTransitioner = new BackTransitioner();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +22,7 @@ public class StaffListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                mBackTransitionHelper.animate(this, MainActivity.class);
+                mBackTransitioner.animate(this, MainActivity.class);
                 finish();
                 return true;
         }
@@ -32,7 +31,7 @@ public class StaffListActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        mBackTransitionHelper.animate(this, MainActivity.class);
+        mBackTransitioner.animate(this, MainActivity.class);
         finish();
         super.onBackPressed();
     }

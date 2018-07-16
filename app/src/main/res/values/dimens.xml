@@ -2,6 +2,11 @@
 <resources>
     <dimen name="font_large">90sp</dimen>
     <dimen name="font_medium">25sp</dimen>
-    <dimen name="dimen_logo_size">200dp</dimen>
+    <dimen name="size_logo">200dp</dimen>
     <dimen name="dimen_edge_margin">20dp</dimen>
+    <dimen name="font_small">15sp</dimen>
+    <dimen name="size_card_staff_info_width">350dp</dimen>
+    <dimen name="size_card_staff_info_height">450dp</dimen>
+    <dimen name="dimen_background_color_padding">5dp</dimen>
+    <dimen name="dimen_card_margin">25dp</dimen>
 </resources>

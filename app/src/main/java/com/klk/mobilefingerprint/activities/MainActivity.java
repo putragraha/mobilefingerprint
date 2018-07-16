@@ -10,11 +10,12 @@ import android.widget.Toast;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
+import com.klk.mobilefingerprint.helpers.AttendanceDialogHelper;
 import com.klk.mobilefingerprint.receivers.DailyDateReceiver;
-import com.klk.mobilefingerprint.utils.AlarmHelper;
+import com.klk.mobilefingerprint.helpers.AlarmHelper;
 import com.klk.mobilefingerprint.utils.CalendarOperator;
 import com.klk.mobilefingerprint.utils.DateWriter;
-import com.klk.mobilefingerprint.utils.NextTransitionHelper;
+import com.klk.mobilefingerprint.utils.NextTransitioner;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -31,8 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     private DateWriter mDateWriter = new DateWriter();
     private CalendarOperator mCalendarOperator = new CalendarOperator();
+    private NextTransitioner mNextTransitioner = new NextTransitioner();
+
     private AlarmHelper mAlarmHelper = new AlarmHelper();
-    private NextTransitionHelper mNextTransitionHelper = new NextTransitionHelper();
+    private AttendanceDialogHelper mAttendanceDialogHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +51,11 @@ public class MainActivity extends AppCompatActivity {
         mDate = new Date();
         mCalendar = new GregorianCalendar();
 
-        String currDate = mDateWriter.getDateText(mDate);
+        String currDate = mDateWriter.getText(mDate);
         String currDay = mDateWriter.getDayOfDate(this, mCalendar);
         mDateText.setText(currDay + ", " + currDate);
+
+        mAttendanceDialogHelper = new AttendanceDialogHelper(this, this);
     }
 
     private void setAddDateDaily() {
@@ -69,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.menuAdmin:
-                mNextTransitionHelper.animate(this, LoginAdminActivity.class);
+                mNextTransitioner.animate(this, LoginAdminActivity.class);
                 return true;
             case R.id.menuHistory:
+                mAttendanceDialogHelper.call();
                 Toast.makeText(this, "History under construction", Toast.LENGTH_LONG).show();
                 return true;
             default:

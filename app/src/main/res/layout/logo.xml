@@ -5,8 +5,8 @@
 
     <ImageView
         android:src="@drawable/klk"
-        android:layout_width="@dimen/dimen_logo_size"
-        android:layout_height="@dimen/dimen_logo_size"
+        android:layout_width="@dimen/size_logo"
+        android:layout_height="@dimen/size_logo"
         android:alpha="0.4"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"

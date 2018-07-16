@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.utils;
+package com.klk.mobilefingerprint.helpers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
