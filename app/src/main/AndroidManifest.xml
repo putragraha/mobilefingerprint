@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.MainActivity">
+            android:name=".activities.MainActivity"
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,13 +24,14 @@
         <activity
             android:name=".activities.LoginAdminActivity"
             android:label="@string/title_administration_login"
-            android:parentActivityName=".activities.MainActivity" />
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="sensorLandscape" />
 
         <activity
             android:name=".activities.StaffListActivity"
             android:label="@string/title_staff_list"
             android:parentActivityName=".activities.MainActivity"
-            />
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>
