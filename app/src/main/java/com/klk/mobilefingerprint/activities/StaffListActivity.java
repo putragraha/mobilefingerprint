@@ -1,14 +1,16 @@
 package com.klk.mobilefingerprint.activities;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.klk.mobilefingerprint.R;
+import com.klk.mobilefingerprint.utils.BackTransitionHelper;
+import com.klk.mobilefingerprint.utils.NextTransitionHelper;
 
 public class StaffListActivity extends AppCompatActivity {
+
+    private BackTransitionHelper mBackTransitionHelper = new BackTransitionHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +23,17 @@ public class StaffListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                Intent intent = new Intent(this, MainActivity.class);
-                ActivityOptions options = ActivityOptions.makeCustomAnimation(this, R.anim.in_from_left, R.anim.out_to_right);
-                startActivity(intent, options.toBundle());
+                mBackTransitionHelper.animate(this, MainActivity.class);
                 finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        mBackTransitionHelper.animate(this, MainActivity.class);
+        finish();
+        super.onBackPressed();
     }
 }

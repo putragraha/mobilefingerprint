@@ -1,8 +1,6 @@
 package com.klk.mobilefingerprint.activities;
 
-import android.app.ActivityOptions;
 import android.app.AlarmManager;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,11 +10,11 @@ import android.widget.Toast;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
-import com.klk.mobilefingerprint.databases.DBHelper;
 import com.klk.mobilefingerprint.receivers.DailyDateReceiver;
 import com.klk.mobilefingerprint.utils.AlarmHelper;
 import com.klk.mobilefingerprint.utils.CalendarOperator;
 import com.klk.mobilefingerprint.utils.DateWriter;
+import com.klk.mobilefingerprint.utils.NextTransitionHelper;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -34,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     private DateWriter mDateWriter = new DateWriter();
     private CalendarOperator mCalendarOperator = new CalendarOperator();
     private AlarmHelper mAlarmHelper = new AlarmHelper();
+    private NextTransitionHelper mNextTransitionHelper = new NextTransitionHelper();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,9 +69,7 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.menuAdmin:
-                Intent intentLoginAdmin = new Intent(this, LoginAdminActivity.class);
-                ActivityOptions optionsLoginAdmin = ActivityOptions.makeCustomAnimation(this, R.anim.in_from_right, R.anim.out_to_left);
-                startActivity(intentLoginAdmin, optionsLoginAdmin.toBundle());
+                mNextTransitionHelper.animate(this, LoginAdminActivity.class);
                 return true;
             case R.id.menuHistory:
                 Toast.makeText(this, "History under construction", Toast.LENGTH_LONG).show();

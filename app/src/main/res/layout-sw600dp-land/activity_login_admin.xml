@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:text="@string/label_administration"
             android:textStyle="bold"
-            android:textSize="@dimen/font_medium"/>
+            android:textSize="@dimen/font_medium"
+            android:layout_gravity="center"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
