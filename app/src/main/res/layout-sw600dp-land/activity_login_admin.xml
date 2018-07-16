@@ -3,23 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".activities.MainActivity">
+    android:layout_margin="@dimen/dimen_edge_margin"
+    tools:context=".activities.LoginAdminActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center_horizontal">
+        android:layout_centerInParent="true"
+        >
         <TextView
-            android:id="@+id/tvDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/label_administration"
+            android:textStyle="bold"
             android:textSize="@dimen/font_medium"/>
-        <DigitalClock
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/font_large"/>
+            android:text="@string/label_put_finger"
+            android:textSize="@dimen/font_medium"/>
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simulate Login"
+            />
+
     </LinearLayout>
+
+    <include
+        layout="@layout/logo" />
 
 </RelativeLayout>

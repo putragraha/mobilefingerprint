@@ -1,5 +1,6 @@
 package com.klk.mobilefingerprint.activities;
 
+import android.app.Activity;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

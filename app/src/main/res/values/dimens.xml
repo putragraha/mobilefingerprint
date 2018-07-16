@@ -2,4 +2,6 @@
 <resources>
     <dimen name="font_large">90sp</dimen>
     <dimen name="font_medium">25sp</dimen>
+    <dimen name="dimen_logo_size">200dp</dimen>
+    <dimen name="dimen_edge_margin">20dp</dimen>
 </resources>
