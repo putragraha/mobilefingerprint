@@ -34,7 +34,7 @@
             android:textSize="@dimen/font_medium"
             android:layout_margin="@dimen/dimen_edge_margin"
             android:padding="@dimen/dimen_background_color_padding"
-            android:background="@color/colorPrimary"
+            android:background="@color/colorAccent"
             android:textColor="@android:color/white"/>
 
 </LinearLayout>

@@ -1,5 +1,6 @@
 package com.klk.mobilefingerprint.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,10 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.klk.mobilefingerprint.R;
+import com.klk.mobilefingerprint.eventlisteners.StaffClickListener;
 import com.klk.mobilefingerprint.models.Staff;
 
 import java.util.ArrayList;
@@ -85,7 +86,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
         };
     }
 
-    public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class StaffViewHolder extends RecyclerView.ViewHolder{
 
         private TextView tvId, tvName;
         private CircleImageView ivAvatar;
@@ -95,13 +96,8 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
             tvId = view.findViewById(R.id.tvCardStaffId);
             tvName = view.findViewById(R.id.tvCardStaffName);
             ivAvatar = view.findViewById(R.id.imageCardStaffPhoto);
-            view.setOnClickListener(this);
-        }
 
-        @Override
-        public void onClick(View view) {
-            long position = getAdapterPosition();
-            Toast.makeText(mContext, String.valueOf(position), Toast.LENGTH_SHORT).show();
+            view.setOnClickListener(new StaffClickListener(mContext));
         }
     }
 }

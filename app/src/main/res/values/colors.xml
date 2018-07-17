@@ -4,4 +4,14 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="green">#43A047</color>
+    <color name="red">#FF0000</color>
+
+    <color name="navigationBarColorAttempted">#777</color>
+    <color name="navigationBarColorSkipped">#063e8b</color>
+    <color name="violet">#673ab7</color>
+    <color name="sky_blue">#0f96fe</color>
+    <color name="sky_blue_pressed">#245e61</color>
+    <color name="black">#000</color>
+    <color name="lightGreen">#76ab42</color>
+    <color name="white">#ffffff</color>
 </resources>

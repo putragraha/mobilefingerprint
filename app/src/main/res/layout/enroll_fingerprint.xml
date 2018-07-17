@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/dimen_edge_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
+
+    <com.library.NavigationBar
+        android:id="@+id/navbarEnrollFinger"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_navbar"
+        app:central_line_height="1dp"
+        app:enable_border="true"
+        app:only_border="false"
+        app:tab_border_color_array="@array/border_state_colors"
+        app:tab_color_array="@array/indicator_colors"
+        app:tab_indicator_color="@color/sky_blue"
+        app:tab_padding="48dp"
+        app:tab_strok_width="3dp"
+        app:tab_text_color_array="@array/text_state_colors"
+        app:tab_text_size="18sp" />
+
+    <ImageView
+        android:id="@+id/ivFingerprint"
+        android:layout_width="@dimen/size_fingerprint_width"
+        android:layout_height="@dimen/size_fingerprint_height" />
+
+    <TextView
+        android:id="@+id/tvCheckFinger"
+        style="@style/CardText"/>
+
+    <ProgressBar
+        android:id="@+id/progressCheckFinger"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="@dimen/size_fingerprint_width"
+        android:layout_height="wrap_content"
+        android:progressDrawable="@drawable/progress_bar_check_finger"/>
+</LinearLayout>

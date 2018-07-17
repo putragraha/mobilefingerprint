@@ -7,8 +7,6 @@ import android.content.DialogInterface;
 import android.os.Handler;
 
 import com.klk.mobilefingerprint.constantvalues.Timer;
-import com.klk.mobilefingerprint.components.SuccessAttendanceDialog;
-import com.klk.mobilefingerprint.components.SuccessWindowManager;
 import com.klk.mobilefingerprint.utils.TimeWriter;
 
 import java.util.Date;
