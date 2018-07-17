@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.helpers;
+package com.klk.mobilefingerprint.utils;
 
 /**
  *  TO SET GRID MARGIN EQUAL EACH OTHER
@@ -8,13 +8,13 @@ import android.graphics.Rect;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
+public class GridSpacingItemDecorationHelper extends RecyclerView.ItemDecoration {
 
     private int mSpanCount;
     private int mSpacing;
     private boolean isEdgeIncluded;
 
-    public GridSpacingItemDecoration(int spanCount, int spacing, boolean isEdgeIncluded){
+    public GridSpacingItemDecorationHelper(int spanCount, int spacing, boolean isEdgeIncluded){
         this.mSpanCount = spanCount;
         this.mSpacing = spacing;
         this.isEdgeIncluded = isEdgeIncluded;

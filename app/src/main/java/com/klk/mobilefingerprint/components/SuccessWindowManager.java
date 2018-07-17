@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.dialogs;
+package com.klk.mobilefingerprint.components;
 
 import android.content.Context;
 import android.view.WindowManager;

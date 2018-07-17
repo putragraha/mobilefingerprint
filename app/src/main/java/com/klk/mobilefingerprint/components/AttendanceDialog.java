@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.helpers;
+package com.klk.mobilefingerprint.components;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,19 +7,19 @@ import android.content.DialogInterface;
 import android.os.Handler;
 
 import com.klk.mobilefingerprint.constantvalues.Timer;
-import com.klk.mobilefingerprint.dialogs.SuccessAttendanceDialog;
-import com.klk.mobilefingerprint.dialogs.SuccessWindowManager;
+import com.klk.mobilefingerprint.components.SuccessAttendanceDialog;
+import com.klk.mobilefingerprint.components.SuccessWindowManager;
 import com.klk.mobilefingerprint.utils.TimeWriter;
 
 import java.util.Date;
 
-public class AttendanceDialogHelper{
+public class AttendanceDialog {
 
     private TimeWriter mTimeWriter = new TimeWriter();
     private Activity mActivity;
     private Context mContext;
 
-    public AttendanceDialogHelper(Activity activity, Context context){
+    public AttendanceDialog(Activity activity, Context context){
         this.mActivity = activity;
         this.mContext = context;
     }

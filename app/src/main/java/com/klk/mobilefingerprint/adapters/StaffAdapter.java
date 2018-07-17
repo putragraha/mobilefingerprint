@@ -2,10 +2,11 @@ package com.klk.mobilefingerprint.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,16 +18,18 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHolder> {
+public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHolder> implements Filterable{
 
     private static final String TAG = StaffAdapter.class.getSimpleName();
 
     private Context mContext;
     private ArrayList<Staff> mStaffList;
+    private ArrayList<Staff> mStaffListFiltered;
 
     public StaffAdapter(Context context, ArrayList<Staff> staffList){
         this.mContext = context;
         this.mStaffList = staffList;
+        this.mStaffListFiltered = staffList;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
 
     @Override
     public void onBindViewHolder(StaffViewHolder holder, int position) {
-        Staff staff = mStaffList.get(position);
+        Staff staff = mStaffListFiltered.get(position);
         holder.tvId.setText(String.valueOf(staff.get_id()));
         holder.tvName.setText(staff.getName());
 
@@ -48,7 +51,38 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
 
     @Override
     public int getItemCount() {
-        return mStaffList.size();
+        return mStaffListFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()){
+                    mStaffListFiltered = mStaffList;
+                } else {
+                    ArrayList<Staff> filteredList = new ArrayList<>();
+                    for(Staff row : mStaffList){
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase())){
+                            filteredList.add(row);
+                        }
+                    }
+                    mStaffListFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = mStaffListFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                mStaffListFiltered = (ArrayList<Staff>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

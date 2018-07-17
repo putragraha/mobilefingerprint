@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.DateTime;
-import com.klk.mobilefingerprint.helpers.AttendanceDialogHelper;
+import com.klk.mobilefingerprint.components.AttendanceDialog;
 import com.klk.mobilefingerprint.receivers.DailyDateReceiver;
-import com.klk.mobilefingerprint.helpers.AlarmHelper;
+import com.klk.mobilefingerprint.components.AlarmHelper;
 import com.klk.mobilefingerprint.utils.CalendarOperator;
 import com.klk.mobilefingerprint.utils.DateWriter;
 import com.klk.mobilefingerprint.utils.NextTransitioner;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     private NextTransitioner mNextTransitioner = new NextTransitioner();
 
     private AlarmHelper mAlarmHelper = new AlarmHelper();
-    private AttendanceDialogHelper mAttendanceDialogHelper;
+    private AttendanceDialog mAttendanceDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String currDay = mDateWriter.getDayOfDate(this, mCalendar);
         mDateText.setText(currDay + ", " + currDate);
 
-        mAttendanceDialogHelper = new AttendanceDialogHelper(this, this);
+        mAttendanceDialog = new AttendanceDialog(this, this);
     }
 
     private void setAddDateDaily() {
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 mNextTransitioner.animate(this, LoginAdminActivity.class);
                 return true;
             case R.id.menuHistory:
-                mAttendanceDialogHelper.call();
+                mAttendanceDialog.call();
                 Toast.makeText(this, "History under construction", Toast.LENGTH_LONG).show();
                 return true;
             default:
