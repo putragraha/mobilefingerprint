@@ -12,15 +12,16 @@ import com.klk.mobilefingerprint.R;
 public class SuccessAttendanceDialog extends AlertDialog.Builder {
 
     private static final String TAG = SuccessAttendanceDialog.class.getSimpleName();
-    private Activity mActivity;
 
     private String currTime = "";
     private String staffId = "";
     private String staffName = "";
 
-    public SuccessAttendanceDialog(Activity activity, Context context) {
+    private Context mContext;
+
+    public SuccessAttendanceDialog(Context context) {
         super(context);
-        this.mActivity = activity;
+        this.mContext = context;
     }
 
     @Override
@@ -33,7 +34,7 @@ public class SuccessAttendanceDialog extends AlertDialog.Builder {
 
     @Override
     public AlertDialog create() {
-        LayoutInflater layoutInflater = mActivity.getLayoutInflater();
+        LayoutInflater layoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.staff_info, null);
         setView(view);
 

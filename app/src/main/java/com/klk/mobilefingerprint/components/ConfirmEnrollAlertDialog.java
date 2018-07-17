@@ -1,11 +1,8 @@
 package com.klk.mobilefingerprint.components;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.view.LayoutInflater;
-import android.view.View;
 
 import com.klk.mobilefingerprint.R;
 
@@ -13,8 +10,17 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
 
     private static final String TAG = ConfirmEnrollAlertDialog.class.getSimpleName();
 
-    public ConfirmEnrollAlertDialog(Context context) {
+    private int mId;
+    private String mName;
+    private Context mContext;
+
+    private EnrollDialog mEnrollDialog;
+
+    public ConfirmEnrollAlertDialog(int id, String name, Context context) {
         super(context);
+        this.mContext = context;
+        this.mId = id;
+        this.mName = name;
     }
 
     @Override
@@ -22,7 +28,9 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
         setPositiveButton(R.string.label_confirm_yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                
+                mEnrollDialog = new EnrollDialog(mContext);
+                final AlertDialog alertDialog = mEnrollDialog.create();
+                alertDialog.show();
             }
         });
 
@@ -33,7 +41,8 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
             }
         });
 
-        setMessage(R.string.label_message_enroll);
+        String msg = mContext.getResources().getString(R.string.label_message_enroll);
+        setMessage(msg + " " + mName);
         setTitle(R.string.label_dialog_title);
         return super.create();
     }

@@ -14,16 +14,14 @@ import java.util.Date;
 public class AttendanceDialog {
 
     private TimeWriter mTimeWriter = new TimeWriter();
-    private Activity mActivity;
     private Context mContext;
 
-    public AttendanceDialog(Activity activity, Context context){
-        this.mActivity = activity;
+    public AttendanceDialog(Context context){
         this.mContext = context;
     }
 
     public void call() {
-        SuccessAttendanceDialog builder = new SuccessAttendanceDialog(mActivity, mContext);
+        SuccessAttendanceDialog builder = new SuccessAttendanceDialog(mContext);
 
         Date date = new Date();
         String currTime = mTimeWriter.getText(date);

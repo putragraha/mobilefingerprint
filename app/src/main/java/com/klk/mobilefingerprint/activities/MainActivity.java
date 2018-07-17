@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         String currDay = mDateWriter.getDayOfDate(this, mCalendar);
         mDateText.setText(currDay + ", " + currDate);
 
-        mAttendanceDialog = new AttendanceDialog(this, this);
+        mAttendanceDialog = new AttendanceDialog(this);
     }
 
     private void setAddDateDaily() {

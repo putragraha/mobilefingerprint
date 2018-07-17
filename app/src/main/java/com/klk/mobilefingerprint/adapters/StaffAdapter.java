@@ -3,16 +3,18 @@ package com.klk.mobilefingerprint.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.klk.mobilefingerprint.R;
-import com.klk.mobilefingerprint.eventlisteners.StaffClickListener;
+import com.klk.mobilefingerprint.components.ConfirmEnrollAlertDialog;
 import com.klk.mobilefingerprint.models.Staff;
 
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
     private Context mContext;
     private ArrayList<Staff> mStaffList;
     private ArrayList<Staff> mStaffListFiltered;
+
+    private ConfirmEnrollAlertDialog mConfirmEnrollAlertDialog;
 
     public StaffAdapter(Context context, ArrayList<Staff> staffList){
         this.mContext = context;
@@ -86,7 +90,7 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
         };
     }
 
-    public class StaffViewHolder extends RecyclerView.ViewHolder{
+    public class StaffViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private TextView tvId, tvName;
         private CircleImageView ivAvatar;
@@ -96,9 +100,19 @@ public class StaffAdapter extends RecyclerView.Adapter<StaffAdapter.StaffViewHol
             tvId = view.findViewById(R.id.tvCardStaffId);
             tvName = view.findViewById(R.id.tvCardStaffName);
             ivAvatar = view.findViewById(R.id.imageCardStaffPhoto);
+            view.setOnClickListener(this);
+        }
 
-            view.setOnClickListener(new StaffClickListener(mContext));
+        @Override
+        public void onClick(View view) {
+            int id = mStaffListFiltered.get(getAdapterPosition()).get_id();
+            String name = mStaffListFiltered.get(getAdapterPosition()).getName();
+
+            mConfirmEnrollAlertDialog = new ConfirmEnrollAlertDialog(id, name, mContext);
+            final AlertDialog alertDialog = mConfirmEnrollAlertDialog.create();
+            alertDialog.show();
         }
     }
+
 }
 
