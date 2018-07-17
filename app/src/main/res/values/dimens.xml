@@ -7,6 +7,10 @@
     <dimen name="font_small">15sp</dimen>
     <dimen name="size_card_staff_info_width">350dp</dimen>
     <dimen name="size_card_staff_info_height">450dp</dimen>
+    <dimen name="size_card_staff_width">300dp</dimen>
+    <dimen name="size_card_staff_height">300dp</dimen>
     <dimen name="dimen_background_color_padding">5dp</dimen>
     <dimen name="dimen_card_margin">25dp</dimen>
+    <dimen name="radius_card_staff">4dp</dimen>
+    <dimen name="border_width_avatar">1dp</dimen>
 </resources>

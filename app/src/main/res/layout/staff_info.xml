@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    style="@style/CardLayout" >
 
     <TextView
         android:id="@+id/tvSuccess"
@@ -18,28 +15,17 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageStaffPhoto"
-        android:layout_width="@dimen/size_logo"
-        android:layout_height="@dimen/size_logo"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/any"
-        app:civ_border_width="1dp"
-        android:padding="@dimen/dimen_edge_margin"
-        app:civ_border_color="@android:color/darker_gray"/>
+        style="@style/CardAvatar"
+        app:civ_border_color="@android:color/darker_gray"
+        app:civ_border_width="@dimen/border_width_avatar"/>
 
         <TextView
             android:id="@+id/tvStaffInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0910117261981"
-            android:textSize="@dimen/font_medium"
-            android:textStyle="bold"/>
+            style="@style/CardTextBold"/>
 
         <TextView
             android:id="@+id/tvStaffName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Syaiful Zuhri"
-            android:textSize="@dimen/font_medium"/>
+            style="@style/CardText"/>
 
         <TextView
             android:id="@+id/tvTime"
