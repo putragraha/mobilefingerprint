@@ -29,9 +29,7 @@
 
         <TextView
             android:id="@+id/tvTime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/font_medium"
+            style="@style/CardText"
             android:layout_margin="@dimen/dimen_edge_margin"
             android:padding="@dimen/dimen_background_color_padding"
             android:background="@color/colorAccent"

@@ -70,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 mNextTransitioner.animate(this, LoginAdminActivity.class);
                 return true;
             case R.id.menuHistory:
-                mAttendanceDialog.call();
-                Toast.makeText(this, "History under construction", Toast.LENGTH_LONG).show();
+//                mAttendanceDialog.call();
+                mNextTransitioner.animate(this, LoginHistoryAcitivity.class);
                 return true;
             default:
                 return true;

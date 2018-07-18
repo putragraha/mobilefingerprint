@@ -10,7 +10,7 @@ import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.utils.BackTransitioner;
 import com.klk.mobilefingerprint.utils.NextTransitioner;
 
-public class LoginAdminActivity extends AppCompatActivity {
+public class LoginHistoryAcitivity extends AppCompatActivity {
 
     private Button mLogin;
 
@@ -20,15 +20,15 @@ public class LoginAdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_admin);
+        setContentView(R.layout.activity_login_history);
 
         mLogin = findViewById(R.id.btnLogin);
 
         mLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            mNextTransitioner.animate(LoginAdminActivity.this, StaffListActivity.class);
-            finish();
+                mNextTransitioner.animate(LoginHistoryAcitivity.this, AttendanceHistoryActivity.class);
+                finish();
             }
         });
     }

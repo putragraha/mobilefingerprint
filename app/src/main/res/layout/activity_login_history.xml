@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/dimen_edge_margin"
-    tools:context=".activities.LoginAdminActivity">
+    tools:context=".activities.LoginHistoryAcitivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -12,21 +12,10 @@
         android:orientation="vertical"
         android:layout_centerInParent="true"
         >
+
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_administration"
-            android:textStyle="bold"
-            android:textSize="@dimen/font_medium"
-            android:layout_gravity="center"
-            android:padding="@dimen/dimen_background_color_padding"
-            android:background="@color/colorPrimary"
-            android:textColor="@android:color/white"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/label_put_finger"
-            android:textSize="@dimen/font_medium"/>
+            style="@style/CardText"
+            android:text="@string/label_put_finger"/>
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"

@@ -4,6 +4,8 @@
     <!--Action Bar Title-->
     <string name="title_administration_login">Administrator Login</string>
     <string name="title_staff_list">Employee List</string>
+    <string name="title_attendance_history_login">Attendance History Login</string>
+    <string name="title_attendance_history">Attendance History</string>
 
     <!--Action Bar Label-->
     <string name="label_search">Search name&#8230;</string>

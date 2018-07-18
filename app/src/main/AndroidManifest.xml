@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <receiver android:name=".receivers.DailyDateReceiver" />
+
         <activity
             android:name=".activities.MainActivity"
             android:screenOrientation="sensorLandscape">
@@ -18,8 +21,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <receiver android:name=".receivers.DailyDateReceiver" />
 
         <activity
             android:name=".activities.LoginAdminActivity"
@@ -31,7 +32,7 @@
             android:name=".activities.StaffListActivity"
             android:label="@string/title_staff_list"
             android:parentActivityName=".activities.MainActivity"
-            android:screenOrientation="sensorLandscape" >
+            android:screenOrientation="sensorLandscape">
             <meta-data
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
@@ -40,6 +41,18 @@
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".activities.LoginHistoryAcitivity"
+            android:label="@string/title_attendance_history_login"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="sensorLandscape"/>
+
+        <activity
+            android:name=".activities.AttendanceHistoryActivity"
+            android:label="@string/title_attendance_history"
+            android:parentActivityName=".activities.MainActivity"
+            android:screenOrientation="sensorLandscape" />
     </application>
 
 </manifest>

@@ -13,14 +13,13 @@ import android.view.MenuItem;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.adapters.StaffAdapter;
+import com.klk.mobilefingerprint.components.RecyclerViewHelper;
 import com.klk.mobilefingerprint.constantvalues.CardConfig;
 import com.klk.mobilefingerprint.data.GlobalData;
 import com.klk.mobilefingerprint.utils.GridSpacingItemDecorationHelper;
-import com.klk.mobilefingerprint.models.Staff;
 import com.klk.mobilefingerprint.utils.BackTransitioner;
 import com.klk.mobilefingerprint.utils.DPtoPixel;
 
-import java.util.ArrayList;
 
 public class StaffListActivity extends AppCompatActivity {
 
@@ -39,23 +38,13 @@ public class StaffListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_staff_list);
 
         init();
-        setRecycler();
     }
 
     private void init(){
-        mRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewStaff);
+        mRecyclerView = findViewById(R.id.recyclerViewStaff);
         mStaffAdapter = new StaffAdapter(this, GlobalData.getInstance().StaffList);
 
-        mDPtoPixel = new DPtoPixel(this);
-        int pixel = mDPtoPixel.convert(CardConfig.STAFF_CARD_DP_VALUE);
-        mGridSpacingItemDecorationHelper = new GridSpacingItemDecorationHelper(CardConfig.STAFF_CARD_SPAN, pixel, true);
-    }
-
-    private void setRecycler(){
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, CardConfig.STAFF_CARD_SPAN);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.addItemDecoration(mGridSpacingItemDecorationHelper);
-        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        new RecyclerViewHelper(this, mRecyclerView, CardConfig.STAFF_CARD_SPAN, CardConfig.STAFF_CARD_DP_VALUE);
         mRecyclerView.setAdapter(mStaffAdapter);
     }
 
@@ -78,7 +67,7 @@ public class StaffListActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    void backAction(){
+    private void backAction(){
         if (!searchView.isIconified()) {
             searchView.setIconified(true);
         } else {
