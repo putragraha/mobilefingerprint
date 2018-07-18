@@ -25,7 +25,15 @@
     <string name="label_finish">Finish</string>
     <string name="label_cancel">Cancel</string>
 
+    <!--Enroll Finger-->
     <string name="label_message_enroll">You are going to enroll fingerprint for : </string>
+    <string name="label_message_finish_enroll">fingerprint(s) will be enrolled </string>
+    <string name="label_fingerprint_saved">Fingerprint Saved</string>
+    <string name="label_ask_finger">Please press finger&#8230;</string>
+    <string name="label_finger_ok">OK</string>
+    <string name="label_finger_invalid">Invalid, try again</string>
+    <string name="label_enroll_finish">Finish</string>
+    <string name="label_enroll_cancel">Cancel</string>
 
     <string-array name="day_name_array">
         <item>Sunday</item>

@@ -1,41 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/dimen_edge_margin"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:layout_height="match_parent" >
 
-    <com.library.NavigationBar
-        android:id="@+id/navbarEnrollFinger"
+    <LinearLayout
+        android:id="@+id/layoutFingerCheck"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_navbar"
-        android:layout_margin="@dimen/dimen_edge_margin"
-        app:central_line_height="1dp"
-        app:enable_border="true"
-        app:only_border="false"
-        app:tab_border_color_array="@array/border_state_colors"
-        app:tab_color_array="@array/indicator_colors"
-        app:tab_indicator_color="@color/sky_blue"
-        app:tab_padding="48dp"
-        app:tab_strok_width="3dp"
-        app:tab_text_color_array="@array/text_state_colors"
-        app:tab_text_size="18sp" />
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/ivFingerprint"
-        android:layout_width="@dimen/size_fingerprint_width"
-        android:layout_height="@dimen/size_fingerprint_height" />
+        <TextView
+            android:id="@+id/tvCheckFinger"
+            style="@style/CardText"
+            android:layout_margin="@dimen/dimen_edge_margin"
+            android:text="@string/label_ask_finger"/>
+
+            <ProgressBar
+                android:id="@+id/pbCheckFinger"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="@dimen/size_vertical_progress_bar_width"
+                android:layout_height="match_parent"
+                android:max="100"
+                android:minHeight="50dp"
+                android:minWidth="200dp"
+                android:progress="0"/>
+
+            <ImageView
+                android:id="@+id/ivFingerprint"
+                android:layout_width="@dimen/size_fingerprint_width"
+                android:layout_height="@dimen/size_fingerprint_height"
+                android:src="@drawable/ic_finger_print"/>
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tvCheckFinger"
-        style="@style/CardText"/>
+        android:id="@+id/tvTotalSavedFinger"
+        style="@style/CardText"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/layoutFingerCheck"
+        android:layout_marginTop="@dimen/dimen_edge_margin"
+        android:layout_marginRight="@dimen/dimen_edge_margin"
+        android:layout_marginEnd="@dimen/dimen_edge_margin"
+        android:textStyle="italic"
+        android:text="0/10"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/tvTotalSavedFinger"
+        android:layout_toStartOf="@id/tvTotalSavedFinger"
+        android:layout_marginRight="@dimen/dimen_edge_margin"
+        android:layout_marginEnd="@dimen/dimen_edge_margin"
+        android:layout_above="@id/pbFingerSaved"
+        android:textStyle="italic"
+        android:text="@string/label_fingerprint_saved"/>
 
     <ProgressBar
-        android:id="@+id/progressCheckFinger"
+        android:id="@+id/pbFingerSaved"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="@dimen/size_fingerprint_width"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:progressDrawable="@drawable/progress_bar_check_finger"/>
-</LinearLayout>
+        android:layout_below="@id/tvTotalSavedFinger"
+        android:indeterminate="false"
+        android:layout_marginBottom="@dimen/dimen_edge_margin"
+        android:layout_marginRight="@dimen/dimen_edge_margin"
+        android:layout_marginEnd="@dimen/dimen_edge_margin"
+        android:layout_marginStart="@dimen/dimen_edge_margin"
+        android:layout_marginLeft="@dimen/dimen_edge_margin"
+        android:max="100"
+        android:minHeight="50dp"
+        android:minWidth="200dp"
+        android:progress="0" />
+</RelativeLayout>

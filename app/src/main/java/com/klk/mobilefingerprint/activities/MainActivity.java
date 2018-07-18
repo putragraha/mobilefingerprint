@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         init();
-        GlobalData.getInstance().loadStaffData();
+        if (GlobalData.getInstance().StaffList != null) { GlobalData.getInstance().loadStaffData(); }
         // setAddDateDaily();
     }
 

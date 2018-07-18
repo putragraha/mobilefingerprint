@@ -6,21 +6,21 @@ import android.content.DialogInterface;
 
 import com.klk.mobilefingerprint.R;
 
-public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
+public class ConfirmFinishEnrollDialog extends AlertDialog.Builder {
 
-    private static final String TAG = ConfirmEnrollAlertDialog.class.getSimpleName();
+    private static final String TAG = ConfirmFinishEnrollDialog.class.getSimpleName();
 
     private int mId;
-    private String mName;
+    private int mFingerTotal;
     private Context mContext;
 
     private EnrollDialog mEnrollDialog;
 
-    public ConfirmEnrollAlertDialog(int id, String name, Context context) {
+    public ConfirmFinishEnrollDialog(int id, int fingerTotal, Context context) {
         super(context);
         this.mContext = context;
         this.mId = id;
-        this.mName = name;
+        this.mFingerTotal = fingerTotal;
     }
 
     @Override
@@ -28,9 +28,7 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
         setPositiveButton(R.string.label_confirm_yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                mEnrollDialog = new EnrollDialog(mId, mContext);
-                final AlertDialog alertDialog = mEnrollDialog.create();
-                alertDialog.show();
+
             }
         });
 
@@ -41,8 +39,8 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
             }
         });
 
-        String msg = mContext.getResources().getString(R.string.label_message_enroll);
-        setMessage(msg + " " + mName);
+        String msg = mContext.getResources().getString(R.string.label_message_finish_enroll);
+        setMessage(mFingerTotal + " " + msg);
         setTitle(R.string.label_dialog_title);
         return super.create();
     }

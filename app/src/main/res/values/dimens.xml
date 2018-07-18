@@ -18,9 +18,9 @@
     <dimen name="dimen_edge_margin">20dp</dimen>
     <dimen name="dimen_background_color_padding">5dp</dimen>
     <dimen name="dimen_card_margin">25dp</dimen>
-    <dimen name="size_navbar">40dp</dimen>
 
     <!--Size Enroll Fingerprint-->
+    <dimen name="size_vertical_progress_bar_width">150dp</dimen>
     <dimen name="size_fingerprint_width">150dp</dimen>
     <dimen name="size_fingerprint_height">200dp</dimen>
 </resources>
