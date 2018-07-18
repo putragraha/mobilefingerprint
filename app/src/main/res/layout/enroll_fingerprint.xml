@@ -11,6 +11,7 @@
         android:id="@+id/navbarEnrollFinger"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_navbar"
+        android:layout_margin="@dimen/dimen_edge_margin"
         app:central_line_height="1dp"
         app:enable_border="true"
         app:only_border="false"
