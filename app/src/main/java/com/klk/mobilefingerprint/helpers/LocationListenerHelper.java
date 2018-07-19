@@ -10,6 +10,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.klk.mobilefingerprint.constantvalues.LocationConfig;
 import com.klk.mobilefingerprint.dialogs.LocationOnDialog;
@@ -34,13 +35,12 @@ public class LocationListenerHelper implements LocationListener {
         checkLocation();
     }
 
-    private Location checkLocation() {
+    private void checkLocation() {
         boolean isGPSEnabled = false;
         boolean isNetworkEnabled = false;
 
         try {
             mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-            // TODO : is it possible to check null value of location manager
             if (mLocationManager != null) {
                 isGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
                 isNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
@@ -65,8 +65,6 @@ public class LocationListenerHelper implements LocationListener {
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }
-
-        return mLocation;
     }
 
     private void requestLocation(String provider) {
@@ -124,7 +122,6 @@ public class LocationListenerHelper implements LocationListener {
 
     @Override
     public void onProviderEnabled(String s) {
-
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.klk.mobilefingerprint.activities;
 
-import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,8 +14,8 @@ import com.karumi.dexter.Dexter;
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.SettingsConfig;
 import com.klk.mobilefingerprint.helpers.AttendanceDialogHelper;
-import com.klk.mobilefingerprint.helpers.LocationListenerHelper;
 import com.klk.mobilefingerprint.data.GlobalData;
+import com.klk.mobilefingerprint.helpers.LocationListenerHelper;
 import com.klk.mobilefingerprint.helpers.PermissionChecker;
 import com.klk.mobilefingerprint.helpers.PermissionErrorChecker;
 import com.klk.mobilefingerprint.utils.DateWriter;
@@ -27,8 +26,6 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity {
-
-    private static final String TAG = MainActivity.class.getSimpleName();
 
     private RelativeLayout mRelativeLayout;
     private TextView mDateText;
@@ -55,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         init();
         setDate();
         requestPermissions();
+
         // setAddDateDaily();
     }
 
@@ -70,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
         btnSimulate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_SHORT).show();
                 mAttendanceDialogHelper.call();
+                Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_LONG).show();
             }
         });
     }

@@ -49,9 +49,6 @@
     <string name="label_open_setting_dialog_message">This app needs permissions to be operated. You can grant them in app settings</string>
     <string name="label_go_to_setting">GO TO SETTINGS</string>
 
-    <!--WARNING-->
-    <string name="warning_gps_disabled">Please turn on your GPS&#8230;</string>
-
     <string-array name="day_name_array">
         <item>Sunday</item>
         <item>Monday</item>

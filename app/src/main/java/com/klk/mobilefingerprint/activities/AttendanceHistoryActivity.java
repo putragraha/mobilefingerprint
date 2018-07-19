@@ -62,8 +62,8 @@ public class AttendanceHistoryActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        backAction();
         super.onBackPressed();
+        backAction();
     }
 
     private void backAction() {
