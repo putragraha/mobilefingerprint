@@ -48,7 +48,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        if (GlobalData.getInstance().StaffList.isEmpty()) { GlobalData.getInstance().loadStaffData(); }
+        if (GlobalData.getInstance().StaffList.isEmpty()) {
+            GlobalData.getInstance().loadStaffData();
+        }
 
         init();
         setDate();
@@ -69,11 +71,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_SHORT).show();
+                mAttendanceDialogHelper.call();
             }
         });
     }
 
-    private void setDate(){
+    private void setDate() {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
 
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         mDateText.setText(currDayDate);
     }
 
-    private void requestPermissions(){
+    private void requestPermissions() {
         Dexter.withActivity(this)
                 .withPermissions(SettingsConfig.PERMISSION_LIST)
                 .withListener(new PermissionChecker(this, this))

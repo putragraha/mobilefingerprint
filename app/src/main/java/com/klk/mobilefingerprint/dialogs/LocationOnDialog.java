@@ -1,5 +1,6 @@
 package com.klk.mobilefingerprint.dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -7,13 +8,16 @@ import android.content.Intent;
 import android.provider.Settings;
 
 import com.klk.mobilefingerprint.R;
+import com.klk.mobilefingerprint.constantvalues.RequestCode;
 
 public class LocationOnDialog extends AlertDialog.Builder {
 
+    private Activity mActivity;
     private Context mContext;
 
-    public LocationOnDialog(final Context context) {
+    public LocationOnDialog(Activity activity, final Context context) {
         super(context);
+        this.mActivity = activity;
         this.mContext = context;
 
         String title = context.getResources().getString(R.string.label_location_dialog_title);
@@ -42,6 +46,6 @@ public class LocationOnDialog extends AlertDialog.Builder {
 
     private void openLocationSettings(){
         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-        mContext.startActivity(intent);
+        mActivity.startActivityForResult(intent, RequestCode.LOCATION_SETTINGS_REQUEST);
     }
 }

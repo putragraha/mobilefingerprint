@@ -13,7 +13,10 @@ import java.util.Date;
 
 public class AttendanceDialogHelper {
 
+    private static final String TAG = AttendanceDialogHelper.class.getSimpleName();
+
     private TimeWriter mTimeWriter = new TimeWriter();
+//    private DateWriter mDateWriter = new DateWriter();
     private Context mContext;
 
     public AttendanceDialogHelper(Context context){
@@ -25,6 +28,7 @@ public class AttendanceDialogHelper {
 
         Date date = new Date();
         String currTime = mTimeWriter.getText(date);
+//        String currDate = mDateWriter.getText(date);
         builder.setCurrTime(currTime);
 
         final AlertDialog alertDialog = builder.create();

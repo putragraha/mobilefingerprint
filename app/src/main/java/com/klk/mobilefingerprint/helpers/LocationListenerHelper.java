@@ -34,7 +34,7 @@ public class LocationListenerHelper implements LocationListener {
         checkLocation();
     }
 
-    private void checkLocation() {
+    private Location checkLocation() {
         boolean isGPSEnabled = false;
         boolean isNetworkEnabled = false;
 
@@ -66,7 +66,7 @@ public class LocationListenerHelper implements LocationListener {
             Log.e(TAG, e.getMessage());
         }
 
-//        return mLocation;
+        return mLocation;
     }
 
     private void requestLocation(String provider) {
@@ -75,7 +75,7 @@ public class LocationListenerHelper implements LocationListener {
             mLocationManager.requestLocationUpdates(provider,
                     LocationConfig.MIN_TIME_FOR_UPDATES,
                     LocationConfig.MIN_DISTANCE_TO_REQUEST_LOCATION,
-                    this);
+                    LocationListenerHelper.this);
 
             if (mLocationManager != null) {
                 mLocation = mLocationManager.getLastKnownLocation(provider);
@@ -108,7 +108,7 @@ public class LocationListenerHelper implements LocationListener {
     }
 
     private void askTurnOnLocation(){
-        LocationOnDialog dialog = new LocationOnDialog(mContext);
+        LocationOnDialog dialog = new LocationOnDialog(mActivity, mContext);
         dialog.show();
     }
 
