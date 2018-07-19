@@ -12,30 +12,45 @@
     <string name="label_admin">Admin</string>
     <string name="label_history">History</string>
 
+    <string name="label_error_permission">Error occurred</string>
     <string name="label_administration">Administration</string>
     <string name="label_put_finger">Put Your Finger to Login</string>
     <string name="label_logo_desc">KLK Logo</string>
     <string name="label_success_attendance">Thank You</string>
 
-    <!--Confirm Alert Dialog-->
-    <string name="label_dialog_title">Are you sure?</string>
+    <!--Common Alert Dialog Label-->
     <string name="label_confirm_yes">Yes</string>
     <string name="label_confirm_no">No</string>
+    <string name="label_confirm_finish">Finish</string>
+    <string name="label_confirm_cancel">Cancel</string>
+
+    <!--Confirm Enroll Finger Alert Dialog-->
+    <string name="label_dialog_title">Are you sure?</string>
+    <string name="label_message_enroll">You are going to enroll fingerprint for : </string>
 
     <!--Enroll Dialog-->
     <string name="label_enroll_dialog_title">Enrolling fingerprint for : </string>
-    <string name="label_finish">Finish</string>
-    <string name="label_cancel">Cancel</string>
+
+    <!--Turn On Location Dialog-->
+    <string name="label_location_dialog_title">Turn On GPS</string>
+    <string name="label_location_dialog_message">Location is not Enabled. Do you want to go to settings to enable it?</string>
 
     <!--Enroll Finger-->
-    <string name="label_message_enroll">You are going to enroll fingerprint for : </string>
-    <string name="label_message_finish_enroll">fingerprint(s) will be enrolled </string>
     <string name="label_fingerprint_saved">Fingerprint Saved</string>
     <string name="label_ask_finger">Please press finger&#8230;</string>
     <string name="label_finger_ok">OK</string>
     <string name="label_finger_invalid">Invalid, try again</string>
-    <string name="label_enroll_finish">Finish</string>
-    <string name="label_enroll_cancel">Cancel</string>
+
+    <!--Confirm Finish Enroll Finger Alert Dialog-->
+    <string name="label_message_finish_enroll">fingerprint(s) will be enrolled </string>
+
+    <!--Open Setting Alert Dialog-->
+    <string name="label_open_setting_dialog_title">Permissions</string>
+    <string name="label_open_setting_dialog_message">This app needs permissions to be operated. You can grant them in app settings</string>
+    <string name="label_go_to_setting">GO TO SETTINGS</string>
+
+    <!--WARNING-->
+    <string name="warning_gps_disabled">Please turn on your GPS&#8230;</string>
 
     <string-array name="day_name_array">
         <item>Sunday</item>

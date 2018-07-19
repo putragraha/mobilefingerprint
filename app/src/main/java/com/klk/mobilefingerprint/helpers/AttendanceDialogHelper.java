@@ -1,21 +1,22 @@
-package com.klk.mobilefingerprint.components;
+package com.klk.mobilefingerprint.helpers;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Handler;
 
+import com.klk.mobilefingerprint.dialogs.SuccessAttendanceDialog;
 import com.klk.mobilefingerprint.constantvalues.Timer;
 import com.klk.mobilefingerprint.utils.TimeWriter;
 
 import java.util.Date;
 
-public class AttendanceDialog {
+public class AttendanceDialogHelper {
 
     private TimeWriter mTimeWriter = new TimeWriter();
     private Context mContext;
 
-    public AttendanceDialog(Context context){
+    public AttendanceDialogHelper(Context context){
         this.mContext = context;
     }
 
@@ -37,7 +38,7 @@ public class AttendanceDialog {
             @Override
             public void run() {
                 if (alertDialog.isShowing()) {
-                    alertDialog.dismiss();
+                    alertDialog.cancel();
                 }
             }
         };

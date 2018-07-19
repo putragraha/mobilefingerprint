@@ -3,18 +3,16 @@ package com.klk.mobilefingerprint.adapters;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.klk.mobilefingerprint.R;
-import com.klk.mobilefingerprint.components.ConfirmEnrollAlertDialog;
+import com.klk.mobilefingerprint.dialogs.ConfirmEnrollAlertDialog;
 import com.klk.mobilefingerprint.models.Staff;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.components;
+package com.klk.mobilefingerprint.dialogs;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -28,16 +28,18 @@ public class ConfirmEnrollAlertDialog extends AlertDialog.Builder {
         setPositiveButton(R.string.label_confirm_yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+
                 mEnrollDialog = new EnrollDialog(mId, mContext);
-                final AlertDialog alertDialog = mEnrollDialog.create();
-                alertDialog.show();
+                final AlertDialog enrollDialog = mEnrollDialog.create();
+                enrollDialog.show();
             }
         });
 
         setNegativeButton(R.string.label_confirm_no, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-
+                dialogInterface.cancel();
             }
         });
 

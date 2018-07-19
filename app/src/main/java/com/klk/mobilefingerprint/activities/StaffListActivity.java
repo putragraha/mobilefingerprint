@@ -4,8 +4,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.view.Menu;
@@ -13,7 +11,7 @@ import android.view.MenuItem;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.adapters.StaffAdapter;
-import com.klk.mobilefingerprint.components.RecyclerViewHelper;
+import com.klk.mobilefingerprint.helpers.RecyclerViewHelper;
 import com.klk.mobilefingerprint.constantvalues.CardConfig;
 import com.klk.mobilefingerprint.data.GlobalData;
 import com.klk.mobilefingerprint.utils.GridSpacingItemDecorationHelper;

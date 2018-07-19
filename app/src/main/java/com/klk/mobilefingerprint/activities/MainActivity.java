@@ -1,15 +1,24 @@
 package com.klk.mobilefingerprint.activities;
 
+import android.Manifest;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.karumi.dexter.Dexter;
 import com.klk.mobilefingerprint.R;
-import com.klk.mobilefingerprint.components.AttendanceDialog;
+import com.klk.mobilefingerprint.constantvalues.SettingsConfig;
+import com.klk.mobilefingerprint.helpers.AttendanceDialogHelper;
+import com.klk.mobilefingerprint.helpers.LocationListenerHelper;
 import com.klk.mobilefingerprint.data.GlobalData;
+import com.klk.mobilefingerprint.helpers.PermissionChecker;
+import com.klk.mobilefingerprint.helpers.PermissionErrorChecker;
 import com.klk.mobilefingerprint.utils.DateWriter;
 import com.klk.mobilefingerprint.utils.NextTransitioner;
 
@@ -21,34 +30,66 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private RelativeLayout mRelativeLayout;
+    private TextView mDateText;
+
     private DateWriter mDateWriter = new DateWriter();
-//    private CalendarOperator mCalendarOperator = new CalendarOperator();
     private NextTransitioner mNextTransitioner = new NextTransitioner();
 
+    private AttendanceDialogHelper mAttendanceDialogHelper;
+    private LocationListenerHelper mLocationHelper;
+
+//    private CalendarOperator mCalendarOperator = new CalendarOperator();
 //    private AlarmHelper mAlarmHelper = new AlarmHelper();
-    private AttendanceDialog mAttendanceDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        init();
+
         if (GlobalData.getInstance().StaffList.isEmpty()) { GlobalData.getInstance().loadStaffData(); }
+
+        init();
+        setDate();
+        requestPermissions();
         // setAddDateDaily();
     }
 
     private void init() {
-        TextView dateText = findViewById(R.id.tvDate);
+        mRelativeLayout = findViewById(R.id.mainLayout);
+        mDateText = findViewById(R.id.tvDate);
+
+        mLocationHelper = new LocationListenerHelper(this, this);
+        mAttendanceDialogHelper = new AttendanceDialogHelper(this);
+
+        // TODO : test purpose
+        Button btnSimulate = findViewById(R.id.btnSimulate);
+        btnSimulate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void setDate(){
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
 
         String currDate = mDateWriter.getText(date);
         String currDay = mDateWriter.getDayOfDate(this, calendar);
         String currDayDate = currDay + ", " + currDate;
-        dateText.setText(currDayDate);
+        mDateText.setText(currDayDate);
+    }
 
-        mAttendanceDialog = new AttendanceDialog(this);
+    private void requestPermissions(){
+        Dexter.withActivity(this)
+                .withPermissions(SettingsConfig.PERMISSION_LIST)
+                .withListener(new PermissionChecker(this, this))
+                .withErrorListener(new PermissionErrorChecker(this, mRelativeLayout))
+                .onSameThread()
+                .check();
     }
 
 //    private void setAddDateDaily() {
@@ -70,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 mNextTransitioner.animate(this, LoginAdminActivity.class);
                 return true;
             case R.id.menuHistory:
-//                mAttendanceDialog.call();
+//                mAttendanceDialogHelper.call();
                 mNextTransitioner.animate(this, LoginHistoryAcitivity.class);
                 return true;
             default:

@@ -1,4 +1,4 @@
-package com.klk.mobilefingerprint.components;
+package com.klk.mobilefingerprint.helpers;
 
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;

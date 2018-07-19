@@ -7,7 +7,7 @@ import android.view.MenuItem;
 
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.adapters.AttendanceHistoryAdapter;
-import com.klk.mobilefingerprint.components.RecyclerViewHelper;
+import com.klk.mobilefingerprint.helpers.RecyclerViewHelper;
 import com.klk.mobilefingerprint.constantvalues.CardConfig;
 import com.klk.mobilefingerprint.models.AttendanceHistory;
 import com.klk.mobilefingerprint.utils.BackTransitioner;
