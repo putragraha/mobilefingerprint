@@ -10,7 +10,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.klk.mobilefingerprint.constantvalues.LocationConfig;
 import com.klk.mobilefingerprint.dialogs.LocationOnDialog;
@@ -54,7 +53,7 @@ public class LocationListenerHelper implements LocationListener {
 
     private void requestLocation(){
         // TODO : Bug on purpose
-//        if (isNetworkEnabled)
+        //if (isGPSEnabled)
         requestLocation(LocationManager.GPS_PROVIDER);
         //if (isNetworkEnabled)
         requestLocation(LocationManager.NETWORK_PROVIDER);

@@ -1,7 +1,6 @@
 package com.klk.mobilefingerprint.activities;
 
 import android.location.Location;
-
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     private NextTransitioner mNextTransitioner = new NextTransitioner();
 
     private AttendanceDialogHelper mAttendanceDialogHelper;
-
     private LocationListenerHelper mLocationHelper;
     private Location mLocation;
 
@@ -48,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         if (GlobalData.StaffList.isEmpty()) {
             GlobalData.getInstance().loadStaffData();
         }
@@ -56,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         init();
         setDate();
         requestPermissions();
-
         // setAddDateDaily();
     }
 
