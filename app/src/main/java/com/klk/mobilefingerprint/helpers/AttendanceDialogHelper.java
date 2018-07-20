@@ -16,7 +16,7 @@ public class AttendanceDialogHelper {
     private static final String TAG = AttendanceDialogHelper.class.getSimpleName();
 
     private TimeWriter mTimeWriter = new TimeWriter();
-//    private DateWriter mDateWriter = new DateWriter();
+//    private CurrentDateWriter mDateWriter = new CurrentDateWriter();
     private Context mContext;
 
     public AttendanceDialogHelper(Context context){

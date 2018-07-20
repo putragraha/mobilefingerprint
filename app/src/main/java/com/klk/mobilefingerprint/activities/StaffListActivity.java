@@ -14,16 +14,12 @@ import com.klk.mobilefingerprint.adapters.StaffAdapter;
 import com.klk.mobilefingerprint.helpers.RecyclerViewHelper;
 import com.klk.mobilefingerprint.constantvalues.CardConfig;
 import com.klk.mobilefingerprint.data.GlobalData;
-import com.klk.mobilefingerprint.utils.GridSpacingItemDecorationHelper;
 import com.klk.mobilefingerprint.utils.BackTransitioner;
-import com.klk.mobilefingerprint.utils.DPtoPixel;
 
 
 public class StaffListActivity extends AppCompatActivity {
 
     private BackTransitioner mBackTransitioner = new BackTransitioner();
-    private DPtoPixel mDPtoPixel;
-    private GridSpacingItemDecorationHelper mGridSpacingItemDecorationHelper;
 
     private StaffAdapter mStaffAdapter;
     private RecyclerView mRecyclerView;
@@ -40,7 +36,7 @@ public class StaffListActivity extends AppCompatActivity {
 
     private void init(){
         mRecyclerView = findViewById(R.id.recyclerViewStaff);
-        mStaffAdapter = new StaffAdapter(this, GlobalData.getInstance().StaffList);
+        mStaffAdapter = new StaffAdapter(this, GlobalData.StaffList);
 
         new RecyclerViewHelper(this, mRecyclerView, CardConfig.STAFF_CARD_SPAN, CardConfig.STAFF_CARD_DP_VALUE);
         mRecyclerView.setAdapter(mStaffAdapter);
@@ -80,9 +76,11 @@ public class StaffListActivity extends AppCompatActivity {
 
         // Associate searchable configuration with the SearchView
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setMaxWidth(Integer.MAX_VALUE);
+        if (searchManager != null){
+            searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+            searchView.setMaxWidth(Integer.MAX_VALUE);
+        }
 
         // listening to search query text change
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

@@ -8,7 +8,7 @@ import java.util.Date;
 
 public class TimeWriter implements DateTimeWriterService
 {
-    private static final String TAG = DateWriter.class.getSimpleName();
+    private static final String TAG = TimeWriter.class.getSimpleName();
     private SimpleDateFormat mSimpleDateFormat;
 
     public TimeWriter(){
