@@ -9,7 +9,12 @@ public class GlobalData {
     public static ArrayList<Staff> StaffList = new ArrayList<>();
     private static GlobalData instance;
 
-    public GlobalData() {}
+    public static GlobalData getInstance() {
+        if(null == instance) {
+            instance = new GlobalData();
+        }
+        return instance;
+    }
 
     public void loadStaffData(){
         for (int i = 0; i < 5; i++) {
