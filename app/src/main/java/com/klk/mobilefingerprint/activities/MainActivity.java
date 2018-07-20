@@ -8,14 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
 import com.klk.mobilefingerprint.R;
 import com.klk.mobilefingerprint.constantvalues.SettingsConfig;
 import com.klk.mobilefingerprint.helpers.AttendanceDialogHelper;
 import com.klk.mobilefingerprint.data.GlobalData;
-import com.klk.mobilefingerprint.helpers.LocationListenerHelper;
 import com.klk.mobilefingerprint.helpers.PermissionChecker;
 import com.klk.mobilefingerprint.helpers.PermissionErrorChecker;
 import com.klk.mobilefingerprint.utils.DateWriter;
@@ -32,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
     private DateWriter mDateWriter = new DateWriter();
     private NextTransitioner mNextTransitioner = new NextTransitioner();
+    private GlobalData mData = new GlobalData();
 
     private AttendanceDialogHelper mAttendanceDialogHelper;
-    private LocationListenerHelper mLocationHelper;
 
 //    private CalendarOperator mCalendarOperator = new CalendarOperator();
 //    private AlarmHelper mAlarmHelper = new AlarmHelper();
@@ -45,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        if (GlobalData.getInstance().StaffList.isEmpty()) {
-            GlobalData.getInstance().loadStaffData();
+        if (GlobalData.StaffList.isEmpty()) {
+            mData.loadStaffData();
         }
 
         init();
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         mRelativeLayout = findViewById(R.id.mainLayout);
         mDateText = findViewById(R.id.tvDate);
 
-        mLocationHelper = new LocationListenerHelper(this, this);
         mAttendanceDialogHelper = new AttendanceDialogHelper(this);
 
         // TODO : test purpose
@@ -69,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 mAttendanceDialogHelper.call();
-                Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_LONG).show();
             }
         });
     }
