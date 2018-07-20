@@ -12,13 +12,13 @@ import com.klk.mobilefingerprint.constantvalues.RequestCode;
 
 public class LocationOnDialog extends AlertDialog.Builder {
 
-    private Activity mActivity;
-    private Context mContext;
+    private static final String TAG = LocationOnDialog.class.getSimpleName();
 
-    public LocationOnDialog(Activity activity, final Context context) {
+    private Activity mActivity;
+
+    public LocationOnDialog(Activity activity, Context context) {
         super(context);
         this.mActivity = activity;
-        this.mContext = context;
 
         String title = context.getResources().getString(R.string.label_location_dialog_title);
         String message = context.getResources().getString(R.string.label_location_dialog_message);
@@ -48,4 +48,5 @@ public class LocationOnDialog extends AlertDialog.Builder {
         Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
         mActivity.startActivityForResult(intent, RequestCode.LOCATION_SETTINGS_REQUEST);
     }
+
 }

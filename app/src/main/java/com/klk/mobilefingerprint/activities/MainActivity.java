@@ -1,6 +1,6 @@
 package com.klk.mobilefingerprint.activities;
 
-import android.Manifest;
+import android.location.Location;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,7 +19,7 @@ import com.klk.mobilefingerprint.helpers.LocationListenerHelper;
 import com.klk.mobilefingerprint.data.GlobalData;
 import com.klk.mobilefingerprint.helpers.PermissionChecker;
 import com.klk.mobilefingerprint.helpers.PermissionErrorChecker;
-import com.klk.mobilefingerprint.utils.DateWriter;
+import com.klk.mobilefingerprint.utils.CurrentDateWriter;
 import com.klk.mobilefingerprint.utils.NextTransitioner;
 
 import java.util.Calendar;
@@ -33,11 +33,12 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout mRelativeLayout;
     private TextView mDateText;
 
-    private DateWriter mDateWriter = new DateWriter();
+    private CurrentDateWriter mCurrentDateWriter = new CurrentDateWriter();
     private NextTransitioner mNextTransitioner = new NextTransitioner();
 
     private AttendanceDialogHelper mAttendanceDialogHelper;
     private LocationListenerHelper mLocationHelper;
+    private Location mLocation;
 
 //    private CalendarOperator mCalendarOperator = new CalendarOperator();
 //    private AlarmHelper mAlarmHelper = new AlarmHelper();
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        if (GlobalData.getInstance().StaffList.isEmpty()) {
+        if (GlobalData.StaffList.isEmpty()) {
             GlobalData.getInstance().loadStaffData();
         }
 
@@ -70,8 +71,11 @@ public class MainActivity extends AppCompatActivity {
         btnSimulate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, String.valueOf(mLocationHelper.getLatitude()) + " | " + String.valueOf(mLocationHelper.getLongitude()), Toast.LENGTH_SHORT).show();
-                mAttendanceDialogHelper.call();
+                mLocation = mLocationHelper.getLocation();
+                if (mLocation != null) {
+                    Toast.makeText(MainActivity.this, String.valueOf(mLocation.getLatitude()) + " | " + String.valueOf(mLocation.getLongitude()), Toast.LENGTH_SHORT).show();
+                    mAttendanceDialogHelper.call();
+                }
             }
         });
     }
@@ -80,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
         Date date = new Date();
         Calendar calendar = new GregorianCalendar();
 
-        String currDate = mDateWriter.getText(date);
-        String currDay = mDateWriter.getDayOfDate(this, calendar);
+        String currDate = mCurrentDateWriter.getText(date);
+        String currDay = mCurrentDateWriter.getDayOfDate(this, calendar);
         String currDayDate = currDay + ", " + currDate;
         mDateText.setText(currDayDate);
     }

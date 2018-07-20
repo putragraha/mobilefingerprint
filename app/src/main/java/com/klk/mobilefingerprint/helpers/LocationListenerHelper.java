@@ -24,49 +24,39 @@ public class LocationListenerHelper implements LocationListener {
     private LocationManager mLocationManager;
     private Location mLocation;
 
-//    public boolean isLocationEnabled = false;
-
-    private double mLatitude, mLongitude;
+    private boolean isGPSEnabled = false, isNetworkEnabled = false;
 
     public LocationListenerHelper(Activity activity, Context context) {
         this.mContext = context;
         this.mActivity = activity;
+
         checkLocation();
     }
 
-    private Location checkLocation() {
-        boolean isGPSEnabled = false;
-        boolean isNetworkEnabled = false;
-
+    private void checkLocation() {
         try {
             mLocationManager = (LocationManager) mContext.getSystemService(Context.LOCATION_SERVICE);
-            // TODO : is it possible to check null value of location manager
             if (mLocationManager != null) {
                 isGPSEnabled = mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
                 isNetworkEnabled = mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
             }
 
             if (!isGPSEnabled && !isNetworkEnabled) {
-//                isLocationEnabled = false;
-//                String gpsWarningMsg = mContext.getResources().getString(R.string.warning_gps_disabled);
-//                Toast.makeText(mContext, gpsWarningMsg, Toast.LENGTH_LONG).show();
                 askTurnOnLocation();
             } else {
-//                isLocationEnabled = true;
-
-                if (isNetworkEnabled) {
-                    requestLocation(LocationManager.NETWORK_PROVIDER);
-                }
-
-                if (isGPSEnabled) {
-                    requestLocation(LocationManager.GPS_PROVIDER);
-                }
+                requestLocation();
             }
         } catch (Exception e) {
             Log.e(TAG, e.getMessage());
         }
+    }
 
-        return mLocation;
+    private void requestLocation(){
+        // TODO : Bug on purpose
+//        if (isNetworkEnabled)
+        requestLocation(LocationManager.GPS_PROVIDER);
+        //if (isNetworkEnabled)
+        requestLocation(LocationManager.NETWORK_PROVIDER);
     }
 
     private void requestLocation(String provider) {
@@ -79,11 +69,6 @@ public class LocationListenerHelper implements LocationListener {
 
             if (mLocationManager != null) {
                 mLocation = mLocationManager.getLastKnownLocation(provider);
-
-                if (mLocation != null) {
-                    mLatitude = mLocation.getLatitude();
-                    mLongitude = mLocation.getLongitude();
-                }
             }
         } else {
             OpenSettingDialog openSettingDialog = new OpenSettingDialog(mActivity, mContext);
@@ -91,25 +76,20 @@ public class LocationListenerHelper implements LocationListener {
         }
     }
 
-    public double getLatitude(){
+    public Location getLocation(){
         if (mLocation != null){
-            mLatitude = mLocation.getLatitude();
+            return mLocation;
+        } else {
+            askTurnOnLocation();
         }
 
-        return mLatitude;
-    }
-
-    public double getLongitude(){
-        if (mLocation != null){
-            mLongitude = mLocation.getLongitude();
-        }
-
-        return mLongitude;
+        return null;
     }
 
     private void askTurnOnLocation(){
         LocationOnDialog dialog = new LocationOnDialog(mActivity, mContext);
         dialog.show();
+        requestLocation();
     }
 
     @Override

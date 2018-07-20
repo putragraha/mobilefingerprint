@@ -11,12 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class DateWriter implements DateTimeWriterService, DayNameWriterService {
+public class CurrentDateWriter implements DateTimeWriterService, DayNameWriterService {
 
-    private static final String TAG = DateWriter.class.getSimpleName();
+    private static final String TAG = CurrentDateWriter.class.getSimpleName();
     private SimpleDateFormat mSimpleDateFormat;
 
-    public DateWriter(){
+    public CurrentDateWriter(){
         mSimpleDateFormat = new SimpleDateFormat(DateTime.DATE_FORMAT);
     }
 
