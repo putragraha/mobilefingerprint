@@ -53,10 +53,10 @@ public class LocationListenerHelper implements LocationListener {
 
     private void requestLocation(){
         // TODO : Bug on purpose
+        //        //if (isNetworkEnabled)
+        requestLocation(LocationManager.NETWORK_PROVIDER);
         //if (isGPSEnabled)
         requestLocation(LocationManager.GPS_PROVIDER);
-        //if (isNetworkEnabled)
-        requestLocation(LocationManager.NETWORK_PROVIDER);
     }
 
     private void requestLocation(String provider) {
